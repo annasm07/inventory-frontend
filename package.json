@@ -22,6 +22,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:vitest": "vitest",
+    "test:vitest:ui": "vitest --ui",
+    "test:vitest:run": "vitest run",
+    "test:vitest:coverage": "vitest run --coverage",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
