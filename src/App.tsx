@@ -1,20 +1,38 @@
 import React from "react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ProductList } from "./components/product-list";
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: 1,
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
 function App() {
   return (
-    <div className="min-h-screen bg-gray-50">
-      <header className="min-h-screen flex flex-col items-center justify-center px-4">
-        <div className="text-center">
-          <h1 className="text-5xl md:text-6xl font-bold text-highlight mb-6 tracking-wide">
-            Pulpo Con Inventory
-          </h1>
-          <div className="w-24 h-1 bg-gradient-to-r from-turquoise to-blue-violet mx-auto mb-6 rounded-full"></div>
-          <p className="text-xl md:text-2xl text-gray-600 font-light tracking-wide">
-            Inventory Management System
-          </p>
-        </div>
-      </header>
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <div className="min-h-screen bg-gray-50">
+        <header className="bg-white shadow-sm border-b">
+          <div className="container mx-auto px-4 py-6">
+            <div className="text-center">
+              <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-2 tracking-wide">
+                Pulpo Con Inventory
+              </h1>
+              <div className="w-24 h-1 bg-gradient-to-r from-blue-500 to-indigo-600 mx-auto mb-4 rounded-full"></div>
+              <p className="text-lg md:text-xl text-gray-600 font-light tracking-wide">
+                Inventory Management System
+              </p>
+            </div>
+          </div>
+        </header>
+        <main>
+          <ProductList />
+        </main>
+      </div>
+    </QueryClientProvider>
   );
 }
 
