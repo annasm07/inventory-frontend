@@ -14,6 +14,7 @@ export interface CreateProductDTO {
   name: string;
   description: string;
   sku: string;
+  imageUrl: string;
   initialStock: number;
   minStock: number;
 }

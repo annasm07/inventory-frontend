@@ -1,5 +1,5 @@
 import React from "react";
-import { ProductDTO } from "../infra/product.dto";
+import { ProductDTO } from "../../../infra/product.dto";
 import { ProductCard } from "./product-card";
 
 interface ProductGridProps {

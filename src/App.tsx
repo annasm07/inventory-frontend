@@ -1,6 +1,6 @@
 import React from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ProductList } from "./components/product-list";
+import { ProductContainer } from "./pods/product/product.container";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -29,7 +29,7 @@ function App() {
           </div>
         </header>
         <main>
-          <ProductList />
+          <ProductContainer />
         </main>
       </div>
     </QueryClientProvider>

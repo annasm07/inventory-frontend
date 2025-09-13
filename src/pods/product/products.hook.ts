@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import { getAllProducts } from "../infra/product.repository";
-import { ProductDTO } from "../infra/product.dto";
+import { getAllProducts } from "../../infra/product.repository";
+import { ProductDTO } from "../../infra/product.dto";
 
 export const useProducts = (params?: string) => {
   const { data, isLoading, error } = useQuery<ProductDTO[], Error>({
