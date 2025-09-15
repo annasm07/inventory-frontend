@@ -75,10 +75,11 @@ docker-compose --profile prod up --build
 
 Create a `.env` file with:
 
-````env
+```env
 # Frontend Configuration
 HOST_PORT=3001
 PORT=3001
+```
 
 ### Access the Application
 
@@ -90,7 +91,7 @@ PORT=3001
 
 ```bash
 docker build -t inventory-frontend .
-````
+```
 
 **Run the production container:**
 
@@ -213,10 +214,6 @@ REACT_APP_API_URL=http://localhost:3002
 3. Commit your changes (`git commit -m 'Add some amazing feature'`)
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
-
-## 📝 License
-
-This project is licensed under the MIT License.
 
 ## 🆘 Troubleshooting
 
