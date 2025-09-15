@@ -1,8 +1,8 @@
+import React from "react";
 import { describe, it, expect, vi } from "vitest";
 import { renderHook, waitFor } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useProducts } from "../products.hook";
-import React from "react";
 
 const createWrapper = () => {
   const queryClient = new QueryClient({

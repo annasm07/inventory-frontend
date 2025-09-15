@@ -1,0 +1,20 @@
+services:
+  # Frontend React Application (Development)
+  frontend-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "3001:3001"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - REACT_APP_API_URL=http://host.docker.internal:3002
+      - CHOKIDAR_USEPOLLING=true
+    networks:
+      - inventory-network
+
+networks:
+  inventory-network:
+    driver: bridge
