@@ -1,6 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createProduct } from "../../infra/product.repository";
 import { CreateProductDTO } from "../../infra/product.dto";
+import { inventoryKeys } from "../../lib/query-keys-factory";
 
 export const useCreateProduct = () => {
   const queryClient = useQueryClient();
@@ -8,8 +9,7 @@ export const useCreateProduct = () => {
   return useMutation({
     mutationFn: (productData: CreateProductDTO) => createProduct(productData),
     onSuccess: () => {
-      // Invalidate and refetch products after successful creation
-      queryClient.invalidateQueries({ queryKey: ["products"] });
+      queryClient.invalidateQueries({ queryKey: [inventoryKeys.products()] });
     },
   });
 };

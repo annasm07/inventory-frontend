@@ -18,7 +18,6 @@ export const useProductForm = (initialData?: Partial<CreateProductDTO>) => {
     (name: string, value: string | number) => {
       setFormData((prev) => ({ ...prev, [name]: value }));
 
-      // Clear error when user starts typing
       if (errors[name]) {
         setErrors((prev) => {
           const newErrors = { ...prev };

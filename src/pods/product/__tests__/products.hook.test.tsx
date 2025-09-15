@@ -46,7 +46,6 @@ describe("useProducts Hook", () => {
   });
 
   it("should handle error state", async () => {
-    // Mock fetch to return an error
     const originalFetch = global.fetch;
     global.fetch = vi.fn().mockRejectedValueOnce(new Error("Network error"));
 
@@ -61,7 +60,6 @@ describe("useProducts Hook", () => {
     expect(result.current.error).toBeDefined();
     expect(result.current.products).toBeUndefined();
 
-    // Restore original fetch
     global.fetch = originalFetch;
   });
 });
