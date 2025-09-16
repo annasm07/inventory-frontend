@@ -179,10 +179,68 @@ src/
 
 ## 🌐 Environment Variables
 
+### Local Development
+
 Create a `.env` file in the root directory:
 
 ```env
 REACT_APP_API_URL=http://localhost:3002
+```
+
+### Docker & Kubernetes Configuration
+
+The backend URL is now **completely configurable** at build time with **no hardcoded defaults**, making it perfect for Kubernetes deployments with ConfigMaps.
+
+#### Using Environment Files
+
+Copy `env.example` to `.env` and configure your backend URL:
+
+```bash
+cp env.example .env
+# Edit .env with your backend URL - this is REQUIRED
+```
+
+**Important**: The `REACT_APP_API_URL` environment variable is **required** - no defaults are provided.
+
+#### Using Build Arguments
+
+Build with a specific backend URL:
+
+```bash
+# Using the build script
+./build-with-env.sh production "http://backend-service:3000"
+
+# Or directly with Docker
+docker build \
+  --build-arg REACT_APP_API_URL="http://backend-service:3000" \
+  --build-arg NODE_ENV=production \
+  -t inventory-frontend:production .
+```
+
+#### Kubernetes ConfigMap Integration
+
+The application is designed to work with Kubernetes ConfigMaps. See `k8s-config-example.yaml` for configuration examples.
+
+**Important**: React applications require environment variables at build time, not runtime. The backend URL gets compiled into the JavaScript bundle during the build process.
+
+### CI/CD Integration
+
+For CI/CD pipelines, you can pass the backend URL as a build argument:
+
+```yaml
+# Example GitHub Actions or GitLab CI
+- name: Build Docker image
+  run: |
+    docker build \
+      --build-arg REACT_APP_API_URL="${{ env.BACKEND_URL }}" \
+      --build-arg NODE_ENV=production \
+      -t inventory-frontend:${{ github.sha }} .
+```
+
+Or using the provided build script:
+
+```bash
+./build-with-env.sh production "$BACKEND_URL"
 ```
 
 ## 🚀 Deployment

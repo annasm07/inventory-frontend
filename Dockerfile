@@ -25,6 +25,14 @@ CMD ["npm", "start"]
 # Build stage
 FROM base as build
 
+# Accept build arguments for environment variables
+ARG REACT_APP_API_URL
+ARG NODE_ENV=production
+
+# Set environment variables for build
+ENV REACT_APP_API_URL=$REACT_APP_API_URL
+ENV NODE_ENV=$NODE_ENV
+
 # Build the application
 RUN npm run build
 

@@ -13,7 +13,7 @@ services:
     environment:
       - NODE_ENV=development
       - PORT=${PORT:-3001}
-      - REACT_APP_API_URL=http://api-dev:${API_PORT:-3000}
+      - REACT_APP_API_URL=${REACT_APP_API_URL}
     command: ["sh", "-c", "npm ci --legacy-peer-deps && npm start"]
     profiles:
       - dev
@@ -24,12 +24,14 @@ services:
       context: .
       dockerfile: Dockerfile
       target: production
+      args:
+        - REACT_APP_API_URL=${REACT_APP_API_URL}
+        - NODE_ENV=production
     ports:
       - "${HOST_PORT:-3000}:${PORT:-80}"
     environment:
       - NODE_ENV=production
       - PORT=${PORT:-80}
-      - REACT_APP_API_URL=http://api-prod:${API_PORT:-3000}
     profiles:
       - prod
 
@@ -39,12 +41,14 @@ services:
       context: .
       dockerfile: Dockerfile
       target: production
+      args:
+        - REACT_APP_API_URL=${REACT_APP_API_URL}
+        - NODE_ENV=production
     ports:
       - "${HOST_PORT:-3000}:${PORT:-80}"
     environment:
       - NODE_ENV=production
       - PORT=${PORT:-80}
-      - REACT_APP_API_URL=http://api:${API_PORT:-3000}
     restart: unless-stopped
     profiles:
       - prod

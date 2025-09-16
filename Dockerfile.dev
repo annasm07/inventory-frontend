@@ -13,6 +13,14 @@ RUN npm install
 # Copy source code
 COPY . .
 
+# Accept build arguments for environment variables
+ARG REACT_APP_API_URL
+ARG NODE_ENV=development
+
+# Set environment variables
+ENV REACT_APP_API_URL=$REACT_APP_API_URL
+ENV NODE_ENV=$NODE_ENV
+
 # Expose port 3001
 EXPOSE 3001
 
