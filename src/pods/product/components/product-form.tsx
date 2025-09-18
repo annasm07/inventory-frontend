@@ -30,7 +30,6 @@ export const ProductForm: React.FC<ProductFormProps> = ({
     resetForm,
     setFieldError,
   } = useProductForm(initialData);
-
   const handleInputChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
       const { name, value } = e.target;
@@ -55,7 +54,6 @@ export const ProductForm: React.FC<ProductFormProps> = ({
         onClose();
       } catch (error) {
         console.error("Failed to create product:", error);
-        // Better error handling
         if (error instanceof Error) {
           setFieldError("submit", error.message);
         } else {

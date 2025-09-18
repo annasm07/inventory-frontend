@@ -11,7 +11,7 @@ interface ErrorStateProps {
 
 export const ErrorState: React.FC<ErrorStateProps> = ({
   title = "Error Loading Products",
-  message = "Something went wrong while loading the products.",
+  message = "Something went wrong while loading.",
   onRetry,
   retryButtonText = "Try Again",
   icon = "⚠️",

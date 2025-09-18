@@ -58,6 +58,8 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       leftIcon ? "pl-10" : ""
     } ${rightIcon ? "pr-10" : ""} ${className}`;
 
+    // throw new Error("test");
+
     return (
       <div className="w-full">
         {label && (
